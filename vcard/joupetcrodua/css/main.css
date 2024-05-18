@@ -1,0 +1,66 @@
+body {
+	background: #FFF;
+	color: #000;
+	font-family: "Avenir Next";
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	overflow-x: hidden;
+}
+
+.profile-pic {
+	margin-top: 113px;
+	width: 200px;
+	height: 200px;
+	border-radius: 20px;
+}
+
+.fullname {
+	font-size: 32px;
+}
+
+.position {
+	font-size: 20px;
+}
+
+.btn-save-contact {
+	width: 392px;
+	height: 76px;
+	border-radius: 50px;
+	background: #e4312b;
+	color: #FFF;
+	font-size: 36px;
+	margin: 48px 0 48px 0;
+	border: 0;
+}
+
+.contact {
+	margin-bottom: 22px;
+}
+
+.contact-info {
+	width: 250px;
+	font-size: 16px;
+	margin-bottom: 19px;
+}
+
+.contact-info a {
+	color: #000;
+}
+
+.social {
+	margin-top: 50px;
+	font-size: 20px;
+}
+
+.social-icons {
+	margin-left: 10px;
+	margin-right: 10px;
+	color: #000;
+}
+
+.slogan {
+	margin-top: 17px;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
