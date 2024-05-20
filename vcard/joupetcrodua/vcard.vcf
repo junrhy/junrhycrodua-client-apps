@@ -1,10 +1,14 @@
 BEGIN:VCARD
 VERSION:3.0
-PRODID:-//Apple Inc.//iOS 17.1.1//EN
-N:Crodua;Jun Rhy;Baclay;;
-FN:Jun Rhy Baclay Crodua
-ORG:Sakto! Online Apps;
-REV:2024-05-18T15:54:43Z
+N:Crodua;Joupet Amon;;;
+FN:Joupet Amon Crodua
+ORG:Anatolia Restaurant SG;
+TEL;TYPE=CELL;TYPE=pref;TYPE=VOICE:+6583009601
+URL;TYPE=WORK;TYPE=pref:http://vcard.sakto.app/joupetcrodua
+URL;TYPE=WORK:https://anatoliarestaurantsg.com
+PRODID:-//Apple Inc.//iCloud Web Address Book 2415B15//EN
+REV:2024-05-20T06:38:22Z
+X-SHARED-PHOTO-DISPLAY-PREF:ALWAYS_ASK
 X-IMAGETYPE:PHOTO
-X-IMAGEHASH:s0uKLcrZmbyFK0COeTqyIg==
+X-IMAGEHASH:rqwWr8uKwUlcRa0/Himn8w==
 END:VCARD
