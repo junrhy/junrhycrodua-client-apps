@@ -92,12 +92,17 @@ $(document).ready(function () {
             let properties = JSON.parse(value.properties);
 
             var image = "";
+            var pronunciation = "";
             var sound = "";
             if (properties) {
                 if (properties.image) {
                     image = "<div class='container'><img src='" + properties.image + "' class='img-fluid rounded mx-auto d-block'/><button class='btn'><i class='fa fa-play'></i></button></div>";
                 }
                 
+                if (properties.pronunciation) {
+                    pronunciation = "<audio controls><source src='" + properties.pronunciation + "' type='audio/mp3'></audio>";
+                }
+
                 if (properties.sound) {
                     sound = "<audio controls><source src='" + properties.sound + "' type='audio/mp3'></audio>";
                 }
@@ -105,7 +110,8 @@ $(document).ready(function () {
 
             $("#list").append("<div class='row p-3 bg-light border-bottom'>\
                     <div class='col-md-2 text-center'>" + image + "</div>\
-                    <div class='col-md-6 fw-bold text-center'>" + value.name + "</div>\
+                    <div class='col-md-2 fw-bold text-center'>" + value.name + "</div>\
+                    <div class='col-md-4 fw-bold text-center'>" + pronunciation + "</div>\
                     <div class='col-md-4 text-center'>" + sound + "</div>\
                 </div>");
         });
