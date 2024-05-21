@@ -33,10 +33,13 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
+    // ----------------- Configuration -------------------
+    let ENDPOINT = "http://localhost:9193";
 	let access_type = null;
     let brand_id = "f6f2202a-6d82-11ee-91c0-0242ac120005";
-    let SIGNIN_ENDPOINT = 'http://localhost:9193/api/login';
+    let SIGNIN_ENDPOINT = ENDPOINT + "/api/login";
     let api_token = getUrlParameter('token');
+    // ---------------------------------------------------
 
     if (api_token == false) {
         $.ajax({
@@ -67,7 +70,7 @@ $(document).ready(function () {
 	
     $.ajax({
         type: 'GET',   
-        url: 'http://localhost:9193/api/animals',
+        url: ENDPOINT + "/api/animals",
         headers: {
             'Accept': 'application/json',
             'Authorization': 'Bearer ' + getUrlParameter('token')
