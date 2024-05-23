@@ -1,3 +1,12 @@
+.pageHeader {
+  background-image: url("../images/header.png");
+  background-color: #FFFFFF;
+  background-size: 600px 180px;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 180px;
+}
+
 /* Container needed to position the button. Adjust the width as needed */
 .container {
   position: relative;
@@ -24,9 +33,72 @@
   padding: 6px 12px;
   border: none;
   cursor: pointer;
-  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .container .btn:hover {
   background-color: black;
+}
+
+.bg-color-1 {
+  background-color: #AF5E26;
+}
+
+.bg-color-2 {
+  background-color: #FCDE42;
+}
+
+iframe {
+  width: 100%;
+  height: 100%;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+  color: #000;
+  margin: 0 auto;
+  border: 1px solid #888;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+.modal-header, .modal-body, .modal-footer {
+  border: 0;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 0;
+}
+
+.close {
+  color: #FFF;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #FCDE42;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .recordName {
+        text-align: center;
+    } 
 }
