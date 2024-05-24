@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Animal Library</title>
+	<title>THE ANIMAL KINGDOM</title>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="css/index.css">
@@ -15,15 +15,53 @@
     <script src="https://kit.fontawesome.com/f146b7c8d2.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="pageHeader p-3">
-        <h1 class="">Animals</h1>
-    </div>
-    <div class="p-3 bg-color-1">
-        <div class="input-group">
-            <input type="text" id="search-input" class="form-control" placeholder="Search">
-            <button id="btn-search" class="btn bg-primary text-light rounded-start-0" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
+    <div class="col-md-12">
+        <div class="allFilters bg-color-1">
+            <div class="col-md-12 filter bySet pb-3">
+                <span id="clasify"><i class="fa-solid fa-layer-group"></i></span>
+                <span id="toggleImage"><i class="fa-solid fa-images"></i></span>
+                <span id="toggleVideo"><i class="fa-solid fa-video"></i></span>
+                <span id="toggleSearch"><i class="fa-solid fa-magnifying-glass"></i></span>
+            </div>
+            <div class="col-md-12 filter mb-3 byLetter">
+                <span class="searchByLetter" data-letter="a"><i class="fa-solid fa-a"></i></span>
+                <span class="searchByLetter" data-letter="b"><i class="fa-solid fa-b"></i></span>
+                <span class="searchByLetter" data-letter="c"><i class="fa-solid fa-c"></i></span>
+                <span class="searchByLetter" data-letter="d"><i class="fa-solid fa-d"></i></span>
+                <span class="searchByLetter" data-letter="e"><i class="fa-solid fa-e"></i></span>
+                <span class="searchByLetter" data-letter="f"><i class="fa-solid fa-f"></i></span>
+                <span class="searchByLetter" data-letter="g"><i class="fa-solid fa-g"></i></span>
+                <span class="searchByLetter" data-letter="h"><i class="fa-solid fa-h"></i></span>
+                <span class="searchByLetter" data-letter="i"><i class="fa-solid fa-i"></i></span>
+                <span class="searchByLetter" data-letter="j"><i class="fa-solid fa-j"></i></span>
+                <span class="searchByLetter" data-letter="k"><i class="fa-solid fa-k"></i></span>
+                <span class="searchByLetter" data-letter="l"><i class="fa-solid fa-l"></i></span>
+                <span class="searchByLetter" data-letter="m"><i class="fa-solid fa-m"></i></span><br>
+                <span class="searchByLetter" data-letter="n"><i class="fa-solid fa-n"></i></span>
+                <span class="searchByLetter" data-letter="o"><i class="fa-solid fa-o"></i></span>
+                <span class="searchByLetter" data-letter="p"><i class="fa-solid fa-p"></i></span>
+                <span class="searchByLetter" data-letter="q"><i class="fa-solid fa-q"></i></span>
+                <span class="searchByLetter" data-letter="r"><i class="fa-solid fa-r"></i></span>
+                <span class="searchByLetter" data-letter="s"><i class="fa-solid fa-s"></i></span>
+                <span class="searchByLetter" data-letter="t"><i class="fa-solid fa-t"></i></span>
+                <span class="searchByLetter" data-letter="u"><i class="fa-solid fa-u"></i></span>
+                <span class="searchByLetter" data-letter="v"><i class="fa-solid fa-v"></i></span>
+                <span class="searchByLetter" data-letter="w"><i class="fa-solid fa-w"></i></span>
+                <span class="searchByLetter" data-letter="x"><i class="fa-solid fa-x"></i></span>
+                <span class="searchByLetter" data-letter="y"><i class="fa-solid fa-y"></i></span>
+                <span class="searchByLetter" data-letter="z"><i class="fa-solid fa-z"></i></span>
+            </div>
+            <div class="col-md-12 p-3 searchInput">
+                <div class="input-group">
+                    <input type="text" id="search-input" class="form-control" placeholder="Search">
+                    <button id="btn-search" class="btn bg-success text-light rounded-start-0" type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="videoMode">
+                <iframe id="video-mode-iframe" src=""></iframe>
+            </div>
         </div>
     </div>
 	<div id="list"></div>
@@ -96,26 +134,30 @@ $(document).ready(function () {
 
     function appendData(response) {
         $.each(response.data, function( index, value ) {
+            let recordName = value.name;
+            let firstLetter = recordName.charAt(0).toLowerCase();
             let properties = JSON.parse(value.properties);
 
             var image = "";
             var pronunciation = "";
             var video = "";
+            var video_src = "";
             var sound = "";
             if (properties) {
                 if (properties.video) {
+                    video_src = properties.video;
                     video = "<button id='btn-playvideo' class='btn' data-video='" + properties.video + "'><i class='fa fa-play'></i></button>";
                 }
 
                 if (properties.image) {
-                    image = "<div class='container'>\
+                    image = "<div class='img-container align-middle'>\
                         <img src='" + properties.image + "' class='img-fluid rounded mx-auto d-block'/>\
                         " + video + "\
                         </div>";
                 }
                 
                 if (properties.pronunciation) {
-                    pronunciation = "<button data-src='" + properties.pronunciation + "' class='btn btn-success btn-playPronunciation'><i class='fa-solid fa-volume-high'></i></button>";
+                    pronunciation = "<button data-src='" + properties.pronunciation + "' class='btn btn-playPronunciation'><i class='fa-solid fa-volume-high'></i></button>";
                 }
 
                 if (properties.sound) {
@@ -123,11 +165,10 @@ $(document).ready(function () {
                 }
             }
 
-            $("#list").append("<div class='col-md-12 p-3 bg-light border-bottom'>\
+            $("#list").append("<div class='recordRow col-md-12 p-3 bg-light border-bottom' data-first-letter='" + firstLetter + "'>\
                     <div class='row'>\
-                    <div class='col-md-2'>" + image + "</div>\
-                    <div class='col-md-2 recordName'><h1>" + value.name + "</h1></div>\
-                    <div class='col-md-4 text-center'>" + pronunciation + "</div>\
+                    <div class='col-md-2 mb-3 recordImage'>" + image + "</div>\
+                    <div class='col-md-4 recordName' data-video='" + video_src + "'><h1>" + pronunciation + " " + value.name + "</h1></div>\
                     <div class='col-md-4 text-center'>" + sound + "</div>\
                     </div>\
                 </div>");
@@ -190,6 +231,67 @@ $(document).ready(function () {
         var audio = new Audio($(this).data('src')); 
         audio.play();
     });
+
+    $("#toggleImage").click(function(){
+        $(this).toggleClass("filter-selected");
+        $(".recordImage").toggle();
+    });
+
+    $("#toggleSearch").click(function(){
+        $(this).toggleClass("filter-selected");
+        $(".byLetter").toggle();
+        $(".searchInput").toggle();
+        $("#list").toggleClass("list-expand");
+
+        if ($("#list").hasClass("list-video-mode")) {
+            $("#list").toggleClass("list-expand-video-mode");
+        }
+    });
+
+    $("#toggleVideo").click(function(){
+        $(this).toggleClass("filter-selected");
+        $("#clasify").toggleClass("filter-disabled");
+        $("#toggleImage").toggleClass("filter-disabled");
+        $("#toggleSearch").toggleClass("filter-disabled");
+        $("#videoMode").toggle();
+        $(".recordImage").toggle();
+        $("#list").toggleClass("list-video-mode");
+        $(".btn-playPronunciation").toggle();
+        $(".recordName").toggleClass("recordName-video-mode");
+    });
+
+    $("#list").on('click', '.recordName', function(){
+        if ($(this).hasClass('recordName-video-mode')) {
+            let video_link = $(this).data('video');
+
+            if (video_link) {
+                $('#video-mode-iframe').attr('src', video_link + "?controls=0");
+            } else {
+                $('#video-mode-iframe').attr('src', "");
+            }
+        }
+    });
+
+    $(".searchByLetter").click(function(){
+        $(this).toggleClass("filter-selected");
+        
+        $(".searchByLetter").each(function() {
+            var firstLetter = $(this).data('letter');
+
+            if ($(this).hasClass("filter-selected")) {
+                $(".recordRow[data-first-letter='" + firstLetter + "']").show();
+            } else {
+                $(".recordRow[data-first-letter='" + firstLetter + "']").hide();
+            }
+           
+        });
+    });
+
+    $(".byLetter").hide();
+    $(".searchInput").hide();
+    $("#videoMode").hide();
+
+    
 });
 </script>
 </html>

@@ -1,26 +1,42 @@
-.pageHeader {
-  background-image: url("../images/header.png");
-  background-color: #FFFFFF;
-  background-size: 600px 180px;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 180px;
+body {
+  user-select: none;
+}
+
+.allFilters {
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  width: 100%;
+}
+
+#search-input {
+  border: 0;
+}
+
+#list {
+  margin-top: 40px;
+}
+
+.list-expand {
+  margin-top: 180px !important;
 }
 
 /* Container needed to position the button. Adjust the width as needed */
-.container {
+.img-container {
   position: relative;
   width: 100%;
 }
 
 /* Make the image responsive */
-.container img {
+.img-container img {
   width: 100%;
   height: auto;
+  border: 13px solid #E4D00A;
+  border-radius: 5px;
 }
 
 /* Style the button and place it in the middle of the container/image */
-.container .btn {
+.img-container .btn {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -42,12 +58,28 @@
   background-color: black;
 }
 
-.bg-color-1 {
-  background-color: #AF5E26;
+.btn-playPronunciation {
+  height: 50px;
+  width: 50px;
+  border: 1px solid #000;
 }
 
-.bg-color-2 {
-  background-color: #FCDE42;
+.btn-playPronunciation:hover {
+  border-color: green;
+}
+
+.filter span {
+  color: #ffffff;
+  font-size: 18pt;
+  margin-left: 5px;
+  margin-right: 5px;
+  position: relative;
+  top: 8px;
+  cursor: pointer;
+}
+
+.filter-selected {
+  color: #E4D00A !important;
 }
 
 iframe {
@@ -55,6 +87,13 @@ iframe {
   height: 100%;
 }
 
+.bg-color-1 {
+  background-color: #AF5E26;
+}
+
+.bg-color-2 {
+  background-color: #FCDE42;
+}
 
 .modal {
   display: none;
@@ -97,8 +136,31 @@ iframe {
   cursor: pointer;
 }
 
+#videoMode {
+  width: 100%;
+  height: 400px;
+  background-color: #000;
+}
+
+.allFilters-video-mode {
+  height: 50%;
+}
+
+.list-video-mode {
+  margin-top: 450px !important;
+}
+
+.filter-disabled {
+  color: #FFA07A !important;
+  pointer-events: none;
+}
+
+.recordName-video-mode {
+  cursor: pointer;
+}
+
 @media (max-width: 767px) {
-    .recordName {
-        text-align: center;
-    } 
+    .filter {
+      text-align: right;
+    }
 }
