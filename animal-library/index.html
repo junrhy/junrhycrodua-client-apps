@@ -18,7 +18,6 @@
     <div class="col-md-12">
         <div class="allFilters bg-color-1">
             <div class="col-md-12 filter bySet pb-3">
-                <span id="clasify"><i class="fa-solid fa-layer-group"></i></span>
                 <span id="toggleImage"><i class="fa-solid fa-images"></i></span>
                 <span id="toggleVideo"><i class="fa-solid fa-video"></i></span>
                 <span id="toggleSearch"><i class="fa-solid fa-magnifying-glass"></i></span>
@@ -36,8 +35,8 @@
                 <span class="searchByLetter" data-letter="j"><i class="fa-solid fa-j"></i></span>
                 <span class="searchByLetter" data-letter="k"><i class="fa-solid fa-k"></i></span>
                 <span class="searchByLetter" data-letter="l"><i class="fa-solid fa-l"></i></span>
-                <span class="searchByLetter" data-letter="m"><i class="fa-solid fa-m"></i></span><br>
-                <span class="searchByLetter" data-letter="n"><i class="fa-solid fa-n"></i></span>
+                <span class="searchByLetter" data-letter="m"><i class="fa-solid fa-m"></i></span>
+                <span class="searchByLetter" data-letter="n"><i class="fa-solid fa-n"></i></span><br>
                 <span class="searchByLetter" data-letter="o"><i class="fa-solid fa-o"></i></span>
                 <span class="searchByLetter" data-letter="p"><i class="fa-solid fa-p"></i></span>
                 <span class="searchByLetter" data-letter="q"><i class="fa-solid fa-q"></i></span>
@@ -50,6 +49,7 @@
                 <span class="searchByLetter" data-letter="x"><i class="fa-solid fa-x"></i></span>
                 <span class="searchByLetter" data-letter="y"><i class="fa-solid fa-y"></i></span>
                 <span class="searchByLetter" data-letter="z"><i class="fa-solid fa-z"></i></span>
+                <span id="searchCategory"><i class="fa-solid fa-angles-right"></i></span>
             </div>
             <div class="col-md-12 p-3 searchInput">
                 <div class="input-group">
@@ -146,7 +146,9 @@ $(document).ready(function () {
             if (properties) {
                 if (properties.video) {
                     video_src = properties.video;
-                    video = "<button id='btn-playvideo' class='btn' data-video='" + properties.video + "'><i class='fa fa-play'></i></button>";
+                    video = "<button id='btn-playvideo' class='btn' data-video='" + properties.video + "'>\
+                                <i class='fa fa-play'></i>\
+                            </button>";
                 }
 
                 if (properties.image) {
@@ -161,7 +163,9 @@ $(document).ready(function () {
                 }
 
                 if (properties.sound) {
-                    sound = "<button data-src='" + properties.sound + "' class='btn btn-success btn-playSound'><i class='fa-solid fa-volume-high'></i></button>";
+                    sound = "<button data-src='" + properties.sound + "' class='btn btn-success btn-playSound'>\
+                                <i class='fa-solid fa-volume-high'></i>\
+                            </button>";
                 }
             }
 
@@ -239,6 +243,7 @@ $(document).ready(function () {
 
     $("#toggleSearch").click(function(){
         $(this).toggleClass("filter-selected");
+        $("#toggleVideo").toggleClass("filter-disabled");
         $(".byLetter").toggle();
         $(".searchInput").toggle();
         $("#list").toggleClass("list-expand");
@@ -250,7 +255,6 @@ $(document).ready(function () {
 
     $("#toggleVideo").click(function(){
         $(this).toggleClass("filter-selected");
-        $("#clasify").toggleClass("filter-disabled");
         $("#toggleImage").toggleClass("filter-disabled");
         $("#toggleSearch").toggleClass("filter-disabled");
         $("#videoMode").toggle();
@@ -275,23 +279,26 @@ $(document).ready(function () {
     $(".searchByLetter").click(function(){
         $(this).toggleClass("filter-selected");
         
+        var selectionCount = 0;
         $(".searchByLetter").each(function() {
             var firstLetter = $(this).data('letter');
 
             if ($(this).hasClass("filter-selected")) {
+                selectionCount = selectionCount + 1;
                 $(".recordRow[data-first-letter='" + firstLetter + "']").show();
             } else {
                 $(".recordRow[data-first-letter='" + firstLetter + "']").hide();
             }
-           
         });
+
+        if (selectionCount == 0) {
+            $(".recordRow").show();
+        }
     });
 
     $(".byLetter").hide();
     $(".searchInput").hide();
     $("#videoMode").hide();
-
-    
 });
 </script>
 </html>
